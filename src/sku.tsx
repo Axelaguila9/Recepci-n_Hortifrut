@@ -11,14 +11,14 @@ function App() {
   useEffect(() => {
     if (mostrarModal && codigo && canvasRef.current) {
       try {
-        JsBarcode(canvasRef.current, codigo, {
-          format: 'CODE128',
-          width: 3,
-          height: 80,
-          displayValue: true,
-          fontSize: 18,
-          margin: 10
-        });
+      JsBarcode(canvasRef.current, codigo, {
+        format: 'CODE128',
+        width: 4,           
+        height: 100,        
+        displayValue: true,
+        fontSize: 20,       
+        margin: 5          
+      });
         
         const imagenUrl = canvasRef.current.toDataURL('image/png');
         setImagenBarcode(imagenUrl);
@@ -65,7 +65,7 @@ function App() {
               padding: 5mm;
             }
             .titulo {
-              font-size: 16px;
+              font-size: 20px;
               font-weight: bold;
               margin-bottom: 10px;
               color: #000;
@@ -76,7 +76,7 @@ function App() {
             }
             @media print {
               @page {
-                size: 100mm 50mm;
+                size: 100mm 52mm;
                 margin: 0;
               }
               body {
@@ -86,7 +86,7 @@ function App() {
               }
               .etiqueta {
                 width: 100mm;
-                height: 50mm;
+                height: 52mm;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -94,13 +94,13 @@ function App() {
                 padding: 3mm;
               }
               .titulo {
-                font-size: 14px;
+                font-size: 40px;
                 font-weight: bold;
                 margin-bottom: 2mm;
               }
               img {
-                max-width: 90mm;
-                max-height: 35mm;
+                max-width: 95mm;
+                max-height: 40mm;
               }
             }
           </style>
@@ -155,7 +155,7 @@ function App() {
               <input 
                 type="text"
                 value={codigo}
-                onChange={(e) => setCodigo(e.target.value)}
+                onChange={(e) => setCodigo(e.target.value.toUpperCase())}
                 placeholder="Ejemplo: MCC12170NFNFST"
                 className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
